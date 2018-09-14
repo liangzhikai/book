@@ -1,0 +1,75 @@
+{layout name='layout/layout' /}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3" >
+			    <table class="table table-hover table-striped table-bordered">
+                <thead class="bordered-blueberry">
+                    <tr>
+							<b><h5><b>热门书籍</b></h5></b>
+
+						</tr>
+
+                </thead>
+                <tbody> 
+                <tr>
+                        <th>
+                           <h6><b>图书名称</b></h6> 
+                        </th>
+                        <th>
+                            <h6><b>借阅量</b></h6>
+                        </th>
+                        <th>
+                           <h6><b>关键词</b></h6>
+                        </th>
+                    </tr>
+					 {volist name='rank' id = 'rank'}
+                    <tr>
+                        <td>
+                            {$rank.title}
+                        </td>
+                        <td>
+                            {$rank.loan}
+                        </td>
+                        <td>
+                            {$rank.keywords}
+                        </td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+
+
+		</div>
+
+
+		<div class="col-lg-9 col-md-9" >
+			<option value=""><h4><b>推荐书籍</b></h4></option>
+			<ul class="list-group" style="list-style-type: none;">
+				{volist name="readre" id="readre"}
+				<li  style="float: left;"  >	
+					<div style="height: 250px;width: 180px;;margin: 10px;margin-bottom: 60px;">
+						<ul style="list-style: none;text-align: center;">
+							<li><img src="{$readre['thumb']}" alt=""  class="img-rounded" style="height: 200px; width: 150px;box-shadow: 5px 5px 5px #888888;"></li>
+							<br>
+							<li><b>名称:{$readre['title']}</b></li>
+							<li ><b>作者:{$readre['author']}</b></li>
+							<li><b>详情:<?php echo mb_substr($readre['desc'],0,9,'utf-8');if(strlen($readre['desc'])>9){echo "...";} ?>
+							</b></li>
+							<li ><b>库存:{$readre['iy']}</b></li>
+							
+
+						</ul>
+
+					</div>
+				</li>
+					{/volist}
+				
+			</ul>
+			
+
+
+
+		</div>
+
+	</div>
+</div>

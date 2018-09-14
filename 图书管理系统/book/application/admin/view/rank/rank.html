@@ -1,0 +1,40 @@
+ {layout name='layout/index' /}
+
+
+ 	<div class="well with-header with-footer">
+            <div class="header bg-palegreen">
+               图书排行榜
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="bordered-blueberry">
+                    <tr>
+                        <th>
+                            图书名称：
+                        </th>
+                        <th>
+                            借阅量：
+                        </th>
+                        <th>
+                           关键词：
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+					 {volist name='rank' id = 'rank'}
+                    <tr>
+                        <td>
+                            {$rank.title}
+                        </td>
+                        <td>
+                            {$rank.loan}
+                        </td>
+                        <td>
+                            {$rank.keywords}
+                        </td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+
+        </div>
+ 

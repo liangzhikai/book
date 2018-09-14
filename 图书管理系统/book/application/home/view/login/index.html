@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>hellow</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__STATIC__/admin/style/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/admin/style/font-awesome.css" rel="stylesheet">
+    <link href="__STATIC__/admin/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__STATIC__/admin/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/admin/style/demo.css" rel="stylesheet">
+    <link href="__STATIC__/admin/style/typicons.css" rel="stylesheet">
+    <link href="__STATIC__/admin/style/animate.css" rel="stylesheet">
+     <link href="__STATIC__/admin/style/home.css" rel="stylesheet">
+ 
+</head>
+<!--Head Ends-->
+<!--Body-->
+
+<body>
+    <div class="login-container animated fadeInDown">
+        <form action="{:url('login/index')}" method="post"  >
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">登陆图书管系统</div>
+                <div class="loginbox-textbox">
+                    <option value="">填写姓名</option>
+                    <input value="admin" class="form-control" placeholder="填写姓名" name="name" type="text">
+                </div>
+                <div class="loginbox-textbox">
+                 <option value="">填写省份证</option>
+                    <input value="admin" class="form-control" placeholder="填写身份证" name="personal" type="text">
+                </div>
+                <div class="loginbox-textbox">
+                    <input class="form-control" type="text" style="width: 100px;float: left;" name="code">
+                    <!-- onclick="this.src='{:captcha_src()}?'+Math.random();"点击的时候,更换图片 -->
+                    <img src="{:captcha_src()}"  onclick="this.src='{:captcha_src()}?'+Math.random();" alt="captcha" width="100px" style="float: left;cursor:pointer;" />
+                </div>
+
+                <div class="loginbox-submit">
+                    <input class="btn btn-primary btn-block" value="Login" type="submit">
+                </div>
+            </div>
+                <div class="logobox">
+                    <p class="text-center">登陆请填写姓名,身份证</p>
+                </div>
+        </form>
+    </div>
+        <!--Basic Scripts-->
+    <script src="__STATIC__/admin/style/jquery_002.js"></script>
+    <script src="__STATIC__/admin/style/bootstrap.js"></script>
+    <script src="__STATIC__/admin/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__STATIC__/admin/style/beyond.js"></script>
+
+
+
+
+</body><!--Body Ends--></html>

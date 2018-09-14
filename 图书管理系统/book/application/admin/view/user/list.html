@@ -1,0 +1,75 @@
+{layout name='layout/index' /}
+                    
+<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('user/add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                <form action="{:url('usr/lst')}" method="post">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">姓别</th>
+                                <th class="text-center">电话</th>
+                                <th class="text-center">头像</th>
+                                <th class="text-center">身份证</th>
+                                <th class="text-center">信誉积分</th>
+                                <th class="text-center" width="20%" >操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       
+                            <tr>
+                                <!-- //进行排序 -->
+                                {volist  name='useres' id='users'}
+                                <td align="center">{$users['id']}</td>
+                                <td align="center">{$users['name']}</td>
+                                <!-- 使用mb_substr限制字符的输出 -->
+                                 {if condition=" $users['sex'] eq 1 "}
+                                      <td align="center">男</td>
+                                    {else/}
+                                      <td align="center">女</td>    
+                                 {/if}
+                                <td><?php echo mb_substr($users['personal'],0,9,'utf-8');if(strlen($users['personal'])>9){echo "...";} ?></td>
+                                <td align="center">
+                                <!-- 判断缩略图是否为空 -->
+                                {if condition=" $users['ava'] neq ''"}
+                                    <img src="{$users['ava']}" alt="" height="30">
+                                    {else/}
+                                    暂无缩略图
+                                    {/if}
+
+                                </td>                      
+                                 <td align="center">{$users['personal']}</td>
+                                   <td align="center">{$users['credit']}</td>
+                                <td align="center">
+                                    <a href="{:url('user/edit',array('id'=>$users['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit">
+                                        </i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('user/del',array('id'=>$users['id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>                       
+                    </table>
+                     
+                    </form>
+                </div>
+             
+                <div>
+                 </div>
+                 {$useres->render()}
+            </div>
+        </div>
+
+            <!-- 显示分页 -->
+
+    </div>
+</div>

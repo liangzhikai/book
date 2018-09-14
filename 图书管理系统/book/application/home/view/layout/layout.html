@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图书馆前台</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="{:url('home/index')}">图书馆</a>
+	</div>
+	<div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">{$Request.session.name}</a></li>
+			<li><a href="{:url('User/index',array('id'=>$Request.session.id))}">查看我的借阅信息</a></li>	
+			<li><a href="{:url('home/index')}">返回主页</a></li>		
+		</ul>
+	</div>
+	</div>
+</nav>
+ <div>{__CONTENT__}</div>
+</body>
+</html>

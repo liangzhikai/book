@@ -1,0 +1,13 @@
+后台网址：http://localhost:8080/book/public/index.php/admin/login/index
+前台网站：http://localhost:8080/book/public/index.php/home/login/index
+
+后台
+账号：chen3
+密码：123qwe
+
+
+前台
+账号：chen3
+密码：123456789
+
+

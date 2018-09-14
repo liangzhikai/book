@@ -1,0 +1,121 @@
+{layout name='layout/layout' /}
+<div class="row">
+	<div class="col-lg-8 col-md-8" style="margin-left: 30px;">
+			<table class="table table-bordered table-hover">
+			  <caption><h4>个人信息</h4></caption>
+			  <thead>
+			    <tr>
+			    	<th>头像</th>
+			    	<th>编号</th>
+				    <th>姓名</th>
+			    	<th>联系电话</th>
+				    <th>信誉</th>
+				    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td> <img src="{$user.ava}" class="img-thumbnail" style="height: 100px;width: 100px;"></td>
+			      <td style="padding-top: 50px;">{$user.id}</td>
+			      <td style="padding-top: 50px;">{$user.name}</td>
+			      <td style="padding-top: 50px;">{$user.phone}</td>
+			      <td style="padding-top: 50px;">{$user.credit}</td>
+			      </tr>
+			    
+			  </tbody>
+			</table>
+
+
+
+	</div>
+
+<div class="row">
+	<div class="col-lg-8 col-md-8" style="margin-left: 30px;">
+
+
+<table class="table table-bordered table-hover"  style="margin-left: 30px;">
+  <caption><h4>借书目录</h4></caption>
+  <thead>
+    <tr>
+      <th>书本编号</th>
+      <th>书名</th>
+    </tr>
+  </thead>
+  <tbody>
+  {volist  name="borrowes" id="borrowes"}
+    <tr>
+      <td>{$borrowes.book_number}</td>
+      <td>{$borrowes.book_title}</td>
+    </tr>
+{/volist}
+  </tbody>
+</table>
+	<table class="table table-bordered table-hover" style="margin-left: 30px;">
+	  <caption><h4>借书记录</h4></caption>
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">用户id</th>
+                                 <th class="text-center">图书编码</th>
+                                <th class="text-center">用户名</th>
+                                <th class="text-center">图书名</th>
+                                <th class="text-center">封面</th>    
+                                 <th class="text-center">借书/还书</th>
+                                 <th class="text-center">时间</th>
+                                  <th class="text-center">剩余时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       
+                            <tr>
+                                <!-- //进行排序 -->
+                                {volist  name='recordes' id='recordes'}
+                                <!-- 使用mb_substr限制字符的输出 -->
+
+                                <td align="center">{$recordes['id']}</td>
+                                <td align="center">{$recordes['user_id']}</td>
+                                <td align="center">{$recordes['book_number']}</td> <td align="center">{$recordes['user_name']}</td>
+                                <td align="center">{$recordes['book_title']}</td>                    
+                                <td align="center">
+                                <!-- 判断缩略图是否为空 -->
+                                {if condition=" $recordes['book_thumb'] neq ''"}
+                                    <img src="{$recordes['book_thumb']}" alt="" height="50">
+                                    {else/}
+                                    暂无缩略图
+                                 {/if}
+
+                                 
+                                </td> 
+                                <td align="center">
+                                {if condition=" $recordes['type'] eq  0 "}
+                                    借书
+                                    {else/}
+                                    还书
+                                 {/if}
+                                </td>
+                                <td align="center">
+                                {$recordes['time']}</td>
+                                <!-- 到期时间 -->
+                                <td align="center">
+                                   {if condition=" $recordes['type'] eq  0 "}
+                                    <?php   
+                                        $date = $recordes['time'] ; 
+
+                                        $lasttime = strtotime($date)+2505600;
+                                        $endtime = $lasttime -strtotime('now');                              
+                                        echo   date('d',$endtime).'天';
+                                        ?>
+                                    {else/}
+                                    0
+                                 {/if}
+                               
+                                </td>
+                            
+                            </tr>
+                            {/volist}
+                        </tbody>                       
+                    </table>
+
+	
+</div>
+</div>
+
